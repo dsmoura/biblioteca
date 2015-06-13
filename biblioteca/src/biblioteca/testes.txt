@@ -1,0 +1,4 @@
+- se o cadastro de um livro no acervo possui um livro
+- se o cadastro de dois livros no acervo possui dois livro
+- cadastrar um livro vazio
+- acervo vazio
