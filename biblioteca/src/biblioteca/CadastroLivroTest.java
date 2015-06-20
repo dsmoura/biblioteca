@@ -94,10 +94,12 @@ public class CadastroLivroTest {
 	
 	@Test
 	public void consultarLivroExistentePorISBN() throws LivroNaoExistenteException {
-		Livro livro = new Livro("12345", "TDD By Example");
-		cadastrarLivro(livro);
+		Livro livroCleanCode = new Livro("283764", "Clean Code");
+		cadastrarLivro(livroCleanCode);
+		Livro livroTDD = new Livro("12345", "TDD By Example");
+		cadastrarLivro(livroTDD);
 		Livro retornoDePesquisa = acervo.consultarPorISBN("12345");
-		assertEquals(livro, retornoDePesquisa);
+		assertEquals(livroTDD, retornoDePesquisa);
 	}
 		
 	@Test(expected = LivroNaoExistenteException.class)
