@@ -1,15 +1,16 @@
 package biblioteca;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+import excecoes.LivroNaoExistenteException;
 import excecoes.LivroVazioException;
 
 public class Acervo {
 	
-	Set<Livro> livros = new HashSet<Livro>();
+	List<Livro> livros = new ArrayList<Livro>();
 
-	public void cadastra(Livro livro) {
+	public void cadastrar(Livro livro) {
 		if (livro == null) {
 			throw new LivroVazioException();
 		}
@@ -20,9 +21,23 @@ public class Acervo {
 		return livros.size();
 	}
 
-	public Set<Livro> pesquisar(String string) {
-	
-		return new HashSet<Livro>();
+	public List<Livro> pesquisar(String titulo) {
+		List<Livro> retorno = new ArrayList<Livro>();
+		for(Livro livro : livros){
+			if(livro.getTitulo().contains(titulo)){
+				retorno.add(livro);
+			}
+		}
+		return retorno;
+	}
+
+	public Livro consultarPorISBN(String ISBN) throws LivroNaoExistenteException {
+		for(Livro livro : livros){
+			if(livro.getISBN().equals(ISBN)){
+				return livro;
+			}
+		}
+		throw new LivroNaoExistenteException();
 	}
 	
 	
